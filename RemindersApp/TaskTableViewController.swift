@@ -16,13 +16,31 @@ class TaskTableViewController: UITableViewController {
     
     var tasks = [Task]()
     
+    override func viewWillAppear(_ animated: Bool) {
+
+        super.viewWillAppear(animated)
+
+        if tasks.count > 1 {
+
+            let sortModel = ListModel()
+
+            let a = sortModel.getSortedTasks(self.tasks)
+
+            self.tasks = a
+
+            tableView.reloadData()
+
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         
         if let savedTasks = loadTasks() {
-            tasks += savedTasks
+           self.tasks += savedTasks
         }
         else {
             loadSampleTasks()

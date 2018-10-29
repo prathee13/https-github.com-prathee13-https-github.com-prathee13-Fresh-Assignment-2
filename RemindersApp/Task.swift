@@ -20,6 +20,7 @@ class Task: NSObject, NSCoding {
     var dueDate: String
     var priority: String
     var notes: String
+    var tmpDueDate: Date?
     
     struct PropertyKey {
         static let title = "title"
@@ -102,6 +103,10 @@ class Task: NSObject, NSCoding {
         } else {
             self.thumbnail = thumbnail
         }
+        let dateFmt = DateFormatter()
+        dateFmt.dateStyle = .full
+        dateFmt.timeStyle = .full
+        self.tmpDueDate = dateFmt.date(from: self.dueDate)
     }
 
     

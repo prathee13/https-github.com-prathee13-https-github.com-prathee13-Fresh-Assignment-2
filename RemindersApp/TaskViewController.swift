@@ -194,6 +194,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
             reminderImage.contentMode = .scaleToFill
             reminderImage.image = pickedImage
         }
+        
         //chnages start here..
         reminderImage.contentMode = UIView.ContentMode.center
         reminderImage.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: image.size.width, height: image.size.height))
